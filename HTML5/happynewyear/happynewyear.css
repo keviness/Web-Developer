@@ -1,0 +1,37 @@
+.first
+{
+    width: 800px;
+    height: 600px;
+    color: red;
+    border: 20px solid brown;
+    background-color: darksalmon;
+    text-align: center;
+    background-image: url(congulation2.jpg);
+    
+}
+.second
+{
+    border: 5px solid brown;
+    background-color: rgb(236, 217, 194);
+}
+.first p strong
+{
+    font-size: 75px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+p + p
+{
+    color: rgb(255, 0, 106);
+    font-size: 30px;
+    border: 5px solid brown;
+    background-color: bisque;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    letter-spacing: 4px;
+}
+.first img
+{
+    width: 280px;
+    height: 300px;
+    border: 3px dashed rgb(255, 0, 0);
+}
