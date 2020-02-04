@@ -1,0 +1,41 @@
+
+#first{
+    width: 900px;
+    height: 800px;
+    margin: auto;
+    padding: 0;
+    border: 2px dashed plum;
+    font-size: 1.2rem;
+    background-color: antiquewhite;
+    overflow: hidden;
+}
+.caption{
+    height: 800px;
+    color: rebeccapurple;
+    background-color: aquamarine;
+    font-family: Arial, Helvetica, sans-serif;
+    float: left;
+}
+h3{
+    padding: 0;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+    background-color: rgb(255, 127, 148);
+    font-style: inherit;
+}
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+p, li{
+    margin: 0;
+    text-indent: 2em;
+}
+span{
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
