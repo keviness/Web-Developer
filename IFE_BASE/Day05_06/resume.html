@@ -8,12 +8,23 @@
     <script type="text/javascript" src="changestyle.js"></script>
     <link rel="stylesheet" href="style3.css" type="text/css"/>
     <style>
-        #navigation{
+        #wrapper{
+            width: 100%;
+            background-color: aqua;
+        }
+        #navigation {
+            width: 100%;
+            height: 50px;
+            line-height: 50px;
+            margin: 0 auto;
+            background-color: brown;
             text-align: center;
             word-spacing: 4rem;
-            }
+        }
         a{
+            height: 20px;
             text-decoration: none;
+            margin-left: 10px;
             border: 2px solid rgb(255, 255, 255);
             background-color: floralwhite;
         }
@@ -22,10 +33,11 @@
     </style>
 </head>
 <body>
+    <div id="wrapper">
     <div id="navigation">
-        <a href="style1.css" onclick="changestyle(this); return false">First</a>
-        <a href="style2.css" onclick="changestyle(this); return false">Second</a>
-        <a href="style3.css" onclick="changestyle(this); return false">Third</a>
+        <a href="style1.css" onclick="changeStyle(this);return false">First</a>
+        <a href="style2.css" onclick="changeStyle(this);return false">Second</a>
+        <a href="style3.css" onclick="changeStyle(this);return false" >Third</a>
     </div>
     <div id="first">
     <div class="caption">
@@ -77,6 +89,7 @@
             Start learn python in 2018 by myself, I find i like coding&nbsp;
             during the times.I start learn C, when i touched the Ubuntu system. 
         </p>
+    </div>
     </div>
     </div>
 </body>
