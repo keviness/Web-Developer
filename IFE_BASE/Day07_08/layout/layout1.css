@@ -1,0 +1,121 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+a{
+    text-decoration: none;
+}
+header{
+    height: 300px;
+    background-color: chartreuse;
+    overflow: hidden;
+}
+header .top{
+    overflow: hidden;
+    background-color: black;
+    color: aliceblue;
+    height: 60px;
+}
+header .logo{
+    margin-left: 120px;
+    line-height: 60px;
+    float: left;
+    font-size: 1.8rem;
+}
+header .link_nav{
+    float: right;
+    margin-right: 90px;
+}
+header .link_nav li{
+    float: left;
+    margin-left: 20px;
+}
+header .caption{
+    height: 150px;
+    line-height: 150px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+header .changeStyle{
+    margin: 40px;
+    float: right;
+    margin-right: 90px;
+}
+header .changeStyle li{
+    float: left;
+    text-align: center;
+    border: 1px solid powderblue;
+    background-color: aqua;
+    width: 90px;
+    margin-left: 80px;
+    line-height: 30px;
+    height: 30px;
+}
+header .changeStyle li :hover{
+    background-color: rgb(180, 21, 29);
+}
+.main_nav{
+    position: relative;
+    height: 90px;
+    border-bottom: 1px solid wheat;
+}
+.main_nav .inner ul{
+    position: relative;
+    top: 30px;
+    left: 90px;
+}
+.main_nav .inner li{
+    float: left;
+    text-align: center;
+    width: 90px;
+    line-height: 60px;
+    height: 60px;
+    border: 2px solid wheat;
+    border-radius: 20px 20px 0 0;
+    background-color: rgb(131, 122, 122);
+}
+.main_nav .inner li :hover{
+    border-bottom: 2px solid wheat;
+    background-color: transparent;
+}
+#container{
+    width: 100%;
+}
+#container .main_content {
+    width: 70%;
+    margin: 0 auto;
+    
+}
+.main_content .inner{
+    display: flex;
+    flex-direction: column;
+}
+.main_content .inner ul{
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+}
+.main_content .inner li{
+    text-align: center;
+    padding: 70px;
+    border: 2px solid wheat;
+    background-color: aqua;
+}
+.main_content .inner li+li{
+    margin-left: 10px;
+}
+.main_content .inner .row_2 li{
+    padding: 80px 70px;
+}
+footer{
+    text-align: center;
+    background-color: black;
+    height: 80px;
+    line-height: 80px;
+    color: aliceblue;
+}
+
+li{
+    list-style-type: none;
+}
