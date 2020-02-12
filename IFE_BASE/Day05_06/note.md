@@ -18,7 +18,7 @@ Date: 2020.2.11
 4. 相邻选择器   M + N
 ***
 ## 盒子模型
-![box model](img/1.jpg "Box Model")
+![box model](img\\1.jpg "BoxModel")
 ### box-sizing: 
 1. content box
 2. padding box
