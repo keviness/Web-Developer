@@ -20,7 +20,7 @@ ul{
 header{
     display: flex;
     flex-direction: column;
-    background-color: chartreuse;
+    background-color: rgb(25, 165, 55);
     overflow: hidden;
 }
 header .top{
@@ -53,6 +53,7 @@ header .caption{
     text-align: center;
     height: 90px;
     font-size: 1.8rem;
+    color: azure;
 }
 .caption p{
     line-height: 90px;
@@ -113,6 +114,7 @@ header .caption{
     padding: 80px 70px;
     flex: 1 1 auto;
     border: 1px solid burlywood;
+    background-color: aquamarine;
 }
 .main_content .inner li+li{
     margin-left: 40px;
@@ -134,4 +136,3 @@ footer{
 footer a{
     color: aliceblue;
 }
-

@@ -1,91 +1,103 @@
 *{
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 a{
     text-decoration: none;
+    outline: none;
+}
+a:link{
+    color: inherit;
+}
+a:hover{
+    border-bottom: 1px solid;
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
 }
 header{
-    height: 300px;
-    background-color: chartreuse;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(14, 111, 190);
     overflow: hidden;
 }
 header .top{
-    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
     background-color: black;
-    color: aliceblue;
-    height: 60px;
+    height: 90px;
+    color: white;
 }
-header .logo{
+.top .logo{
     margin-left: 120px;
-    line-height: 60px;
-    float: left;
-    font-size: 1.8rem;
+    line-height: 90px;
+    font-size: 1.5rem;
 }
-header .link_nav{
-    float: right;
-    margin-right: 90px;
+.top .link_nav{
+    margin-right: 100px;
+    margin-top: 30px;
 }
-header .link_nav li{
+.top .link_nav li{
     float: left;
+}
+.top .link_nav a{
+    color: white;
+}
+.link_nav li+li{
     margin-left: 20px;
 }
 header .caption{
-    height: 150px;
-    line-height: 150px;
+    margin-top: 30px;
     text-align: center;
-    font-size: 2.5rem;
-    font-weight: bold;
-}
-header .changeStyle{
-    margin: 40px;
-    float: right;
-    margin-right: 90px;
-}
-header .changeStyle li{
-    float: left;
-    text-align: center;
-    border: 1px solid powderblue;
-    background-color: aqua;
-    width: 90px;
-    margin-left: 80px;
-    line-height: 30px;
-    height: 30px;
-}
-header .changeStyle li :hover{
-    background-color: rgb(180, 21, 29);
-}
-.main_nav{
-    position: relative;
     height: 90px;
-    border-bottom: 1px solid wheat;
+    font-size: 1.8rem;
 }
-.main_nav .inner ul{
-    position: relative;
-    top: 30px;
-    left: 90px;
+.caption p{
+    line-height: 90px;
 }
-.main_nav .inner li{
+.changeStyle ul{
+    float: right;
+    margin-top: 50px;
+    margin-right: 20px;
+}
+.changeStyle ul li{
+    float: left;
+    margin-right: 20px;
+}
+.changeStyle ul li a{
+    height: 40px;
+    background-color: azure;
+}
+.changeStyle ul li a:hover{
+    height: 50px;
+}
+#container .inner{
+    margin: 0 150px;
+}
+#container .main_nav{
+    border: 1px solid bisque;
+    overflow: hidden;
+}
+#container .main_nav li{
+    margin-top: 20px;
+    margin-right: 20px;
     float: left;
     text-align: center;
-    width: 90px;
-    line-height: 60px;
     height: 60px;
-    border: 2px solid wheat;
+    width: 120px;
+    line-height: 60px;
+    background-color: bisque;
+    border: 1px solid rosybrown;
     border-radius: 20px 20px 0 0;
-    background-color: rgb(131, 122, 122);
 }
-.main_nav .inner li :hover{
-    border-bottom: 2px solid wheat;
+.main_nav li:hover{
     background-color: transparent;
 }
-#container{
-    width: 100%;
-}
-#container .main_content {
-    width: 70%;
-    margin: 0 auto;
-    
+.main_nav a{
+    border: none;
+    color: rgb(34, 34, 33);
 }
 .main_content .inner{
     display: flex;
@@ -94,28 +106,33 @@ header .changeStyle li :hover{
 .main_content .inner ul{
     display: flex;
     justify-content: space-between;
-    margin: 10px 0;
 }
 .main_content .inner li{
     text-align: center;
-    padding: 70px;
-    border: 2px solid wheat;
-    background-color: aqua;
+    margin: 20px 0px;
+    padding: 80px 70px;
+    flex: 1 1 auto;
+    border: 1px solid burlywood;
+    background-color: aquamarine;
 }
 .main_content .inner li+li{
-    margin-left: 10px;
+    margin-left: 40px;
 }
-.main_content .inner .row_2 li{
-    padding: 80px 70px;
+.main_content .inner .row_1 ul {
+    display: flex;
+}
+.main_content .inner .row_1 ul li{
+    align-self: flex-start;
 }
 footer{
+    width: 100%;
     text-align: center;
     background-color: black;
-    height: 80px;
-    line-height: 80px;
+    color: aliceblue;
+    height: 90px;
+    line-height: 90px;
+}
+footer a{
     color: aliceblue;
 }
 
-li{
-    list-style-type: none;
-}
