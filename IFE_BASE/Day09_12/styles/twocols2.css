@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+a{
+    text-decoration: none;
+}
+ul{
+    list-style-type: none;
+}
+header{
+    display: flex;
+    flex-direction: column;
+    height: 300px;
+    background-color: rgb(46, 235, 55);
+}
+header .top{
+    display: flex;
+    justify-content: space-between;
+    height: 30%;
+    color: aliceblue;
+    background-color: black;
+}
+header .logo{
+    margin-left: 100px;
+    line-height: 90px;
+    font-size: 1.5rem;
+}
+header .out_link{
+    margin-right: 100px;
+}
+header .out_link li{
+    float: left;
+    margin-left: 20px;
+}
+header .caption{
+    height: 30%;
+    text-align: center;
+}
+header .caption p{
+    margin-top: 50px;
+    line-height: 90px;
+    font-size: 1.5rem;
+    color: bisque;
+}
+header .inner_link{
+    overflow: hidden;
+}
+header .inner_link ul{
+    float: right;
+    display: flex;
+    justify-content: space-between;
+}
+header .inner_link li{
+    margin-top: 60px;
+    margin-right: 20px;
+    background-color: blanchedalmond;
+}
+#container {
+    display: flex;
+    justify-content: space-between;
+    height: 450px;
+}
+#container #nav{
+    flex: 1 1 auto;
+    height: 100%;
+    background-color: aqua;
+}
+#nav ul{
+    display: flex;
+    justify-content: space-around;
+}
+#nav ul li{
+    flex: 1 1 auto;
+}
+#container #content .inner{
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    height: 100%;
+}
+#content ul{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: space-around;
+}
+#content ul li{
+    flex: 1 1 auto;
+    border: 1px solid palegreen;
+    background-color: burlywood;
+}
+footer{
+    height: 80px;
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+    line-height: 80px;
+}

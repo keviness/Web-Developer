@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    height: 100px;
+    text-align: center;
+    color: aliceblue;
+    background-color: black;
+}
+#container{
+    height: 450px;
+}
+.wrapper{
+    float: left;
+    padding: 0 200px;
+    width: 100%;
+    height: 100%;
+    background-color: blueviolet;
+}
+.nav, .extra{
+    width: 200px;
+    height: 100%;
+}
+.nav{
+    float: left;
+    margin-left: -100%;
+    background-color: aqua;
+}
+.extra{
+    float: left;
+    margin-left: -200px;
+    background-color: chartreuse;
+}
+footer{
+    height: 100px;
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+}

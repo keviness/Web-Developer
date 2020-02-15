@@ -1,0 +1,37 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header{
+    height: 100px;
+    text-align: center;
+    color: aliceblue;
+    background-color: black;
+}
+#container{
+    height: 500px;
+    overflow: hidden;
+}
+.nav, .extra{
+    width: 200px;
+    height: 100%;
+}
+.nav{
+    float: left;
+    background-color: aqua;
+}
+.extra{
+    float: right;
+    background-color: brown;
+}
+.content{
+    background-color: blue;
+    height: 100%;
+}
+footer{
+    height: 100px;
+    text-align: center;
+    background-color: black;
+    color: aliceblue;
+}
