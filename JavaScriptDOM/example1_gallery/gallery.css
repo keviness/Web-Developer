@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+ul{
+    list-style-type: none;
+}
+a{
+    text-decoration: none;
+}
+h3{
+    color: rgb(255, 178, 127);
+}
+.picture_list{
+    border: 2px solid rgb(188, 170, 238);
+}
+.picture_list ul{
+    overflow: hidden;
+    margin-left: 120px;
+}
+.picture_list ul li{
+    text-align: center;
+    margin: 20px;
+    float: left;
+    border: 1px solid yellow;
+}
+.placeholder{
+    margin: 40px auto;
+    width: 80%;
+    height: 300px;
+    border: 1px dashed rgb(0, 255, 170);
+}
