@@ -12,7 +12,7 @@ function addOnloadEvent(func){
 }
 function prepareStyle(){
     if (!document.getElementsByClassName) return false;
-    if(!document.getElementsByClassName("changeStyle")) return false;
+    if (!document.getElementsByClassName("changeStyle")) return false;
     var style_list = document.getElementsByClassName("changeStyle")[0];
     var styles = style_list.getElementsByTagName("a");
     for (var i=0; i<styles.length; i++){
