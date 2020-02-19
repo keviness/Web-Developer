@@ -236,8 +236,46 @@ h3{
     margin-top: 12rem;
 }
 #message_area{
-    flex: 1 1 35%;
+    flex: 1 1 45%;
+}
+/**chat_summery**/
+.chat_summary{
+    display: flex;
+    flex-direction: column;
+    border: 0.1rem solid rgb(229, 232, 238);
+    border-left: none;
+    border-top: none;
+}
+.chat_summary .search_chat{
+    width: 100%;
+    line-height: 6rem;
+    height: 6rem;
+    border: 0.1rem solid rgb(229, 232, 238);
+}
+.chat_summary .search_field{
+    margin-left: 1rem;
+    width: 90%;
+    height: 3.5rem;
+    border-radius: 0.4rem;
+    border: 0.1rem solid rgb(229, 232, 238);
+}
+.chat_summary .search_button{
+    display: inline-block;
+    margin-left: -3.5rem;
+    margin-top: 1.5rem;
+    width: 1.6rem;
+    height: 1.6rem;
+    background-image: url(img/search.png);
+}
+.chat_summary article{
+    flex: 1 0 auto;
+    border: 0.1rem solid rgb(229, 232, 238);
+    border-left: none;
+}
+.chat_summary article .status{
+    display: flex;
+    justify-content: space-between;
 }
 #chat_prsonal{
-    flex: 1 1 65%;
+    flex: 1 1 55%;
 }
