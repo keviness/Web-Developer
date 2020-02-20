@@ -268,13 +268,74 @@ h3{
     background-image: url(img/search.png);
 }
 .chat_summary article{
-    flex: 1 0 auto;
+    flex: 1 1 auto;
+    padding: 1.5rem;
     border: 0.1rem solid rgb(229, 232, 238);
     border-left: none;
 }
 .chat_summary article .status{
     display: flex;
+    margin-bottom: 1rem;
     justify-content: space-between;
+    width: 100%;
+    height: 5rem;
+}
+.chat_summary article .info{
+    width: 100%;
+    height: 100%;
+}
+.chat_summary article .info p{
+    overflow: hidden;
+    margin-top: -1rem;
+}
+.chat_summary article .time p{
+    height: 5rem;
+    line-height: 5rem;
+    margin-left: -8rem;
+}
+.chat_summary .status .avatar{
+    display: block;
+    float: left;
+    margin-top: 1rem;
+    margin-right: 1rem;
+    width: 5rem;
+    height: 5rem;
+    background-repeat: no-repeat;
+}
+.chat_summary .active_chat .chat_content{
+    display: flex;
+    justify-content: space-between;
+}
+.chat_summary .active_chat .chat_content span{
+    display: block;
+    width: 5rem;
+    height: 3rem;
+    text-align: center;
+    line-height: 3rem;
+    background-image: url(img/base3.png);
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#message_area article:nth-child(2) .avatar{
+    background-image: url(img/avatar2.png);
+}
+#message_area article:nth-child(3) .avatar{
+    background-image: url(img/avatar3.png);
+}
+.chat_summary article:nth-child(4) .avatar{
+    background-image: url(img/avatar4.png);
+}
+.chat_summary article:nth-child(5) .avatar{
+    background-image: url(img/avatar5.png);
+}
+.chat_summary article:nth-child(6) .avatar{
+    background-image: url(img/avatar6.png);
+}
+.chat_summary article:nth-child(7) .avatar{
+    background-image: url(img/avatar7.png);
+}
+.chat_summary article:nth-child(8) .avatar{
+    background-image: url(img/avatar8.png);
 }
 #chat_prsonal{
     flex: 1 1 55%;
