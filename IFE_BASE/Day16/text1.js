@@ -1,4 +1,5 @@
 /**text 1**/
+"use strict"
 function addLoadEvent(func){
     var oldEvent = window.onload;
     if (typeof window.onload != "function"){
@@ -12,42 +13,62 @@ function addLoadEvent(func){
     }
 }
 function prepareFureature(){
-    var value1 = document.getElementById("first-number").value;
-    var value2 = document.getElementById("second-number").value;
     var result = document.getElementById("result");
-    var buttons = document.getElementsByTagName("button");
-    buttons[0].onclick = function(){
-        result.innerHTML = add(value1, value2);
+    var button1 = document.getElementById("add-btn");
+    var button2 = document.getElementById("minus-btn");
+    var button3 = document.getElementById("times-btn");
+    var button4 = document.getElementById("divide-btn");
+    button1.onclick = function(){       //event is a function
+        result.innerHTML = add();
     }
-    buttons[1].onclick = function(){
-        result.innerHTML = minus(value1, value2);
+    button2.onclick = function(){
+        result.innerHTML = minus();
     }
-    buttons[2].onclick = function(){
-        result.innerHTML = times(value1, value2);
+    button3.onclick = function(){
+        result.innerHTML = times();
     }
-    buttons[3].onclick = function(){
-        result.innerHTML = divide(value1, value2);
+    button4.onclick = function(){
+        result.innerHTML = divide();
     }
 }
-function add(value1, value2){
-    var tol =value1 + value2;
-    return tol;
-}
-function minus(value1, value2){
-    var tol = value1 - value2;
-    return tol;
-}
-function times(value1, value2, result){
-    var tol = value1 * value2;
-    return tol; 
-}
-function divide(value1, value2, result){
-    if (value !== 0)
+function add(){
+    var value1 = Number(document.getElementById("first-number").value);
+    var value2 = Number(document.getElementById("second-number").value);
+    if(typeof value1 === "number" && typeof value2 === "number")
     {
-        var tol = valur1 / value2;
+        var tol =value1 + value2;
         return tol;
     }else{
-        result.innerHTML = "the wrong!"
+        console.log("error!");
+    }
+}
+function minus(){
+    var value1 = Number(document.getElementById("first-number").value);
+    var value2 = Number(document.getElementById("second-number").value);
+    if (typeof value1 === "number" && typeof value2 === "number"){
+    var tol = value1 - value2;
+    return tol;
+    }else{
+        console.log("error");
+    }
+}
+function times(){
+    var value1 = Number(document.getElementById("first-number").value);
+    var value2 = Number(document.getElementById("second-number").value);
+    if (typeof value1 === "number" && typeof value2 ==="number"){
+    var tol = value1 * value2;
+    return tol; 
+    }
+}
+function divide(){
+    var value1 = Number(document.getElementById("first-number").value);
+    var value2 = Number(document.getElementById("second-number").value);
+    if (value2!=0 && typeof value1 === "number" && typeof value2 === "number")
+    {
+        var tol = value1 / value2;
+        return tol;
+    }else{
+        console.log("error!");
     }
 }
 addLoadEvent(prepareFureature);
