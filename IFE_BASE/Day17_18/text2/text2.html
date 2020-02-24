@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Day17~18</title>
+</head>
+<body>
+    <h2>Result</h2>
+    <p id="output"></p>
+    <script>
+        var put = document.getElementById("output");
+        put.innerHTML = "";
+        for (var i=1; i<101; i++){
+            if (i%3 === 0)
+            {
+                put.innerHTML += " PAT";
+                console.log(" PAT");
+            }else{
+            put.innerHTML += " "+i;
+            console.log(" "+i);
+            }
+        }
+    </script>
+</body>
+</html>

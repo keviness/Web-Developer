@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Day17~18</title>
+</head>
+<body>
+    <h2>Result</h2>
+    <p id="gretting"></p>
+    <table id="output"></table>
+    <script>
+        var put = document.getElementById("output");
+        put.innerHTML = "";
+        var caption = "<caption> a list </caption>"
+        var tr = "<tr>"
+        var etr = "</tr>"
+        var td = "<td>"
+        var etd = "</td>"
+        for (var i=1; i<10; i++){
+            for (var j=1; j<i+1; j++){
+                console.log("%d * %d = %d \n",j, i, i*j);
+                put.innerHTML += caption+tr+td+j+"*"+i+"="+(i*j)+etd+etr; 
+            }
+        }
+        var gretting = document.getElementById("gretting");
+        var time = new Date();
+        if (time.getHours()<12){
+            gretting.innerHTML = "Good morning! Now:"+time;
+        }else if(time.getHours()<18){
+            gretting.innerHTML = "Good Afternoon! Now:"+time;
+        }
+        else{
+            gretting.innerHTML = "Good Evening! Now:"+time;
+        }
+    </script>
+</body>
+</html>
