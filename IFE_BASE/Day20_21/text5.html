@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Day20~21</title>
+</head>
+<body>
+    <div id="fade-obj" style="width:300px;height:300px;background:#000"></div>
+    <button id="fade-btn">淡出</button>
+    <script>
+        var setEvent1,
+            setEvent2,
+            setEvent3,
+            setEvent4;
+        var obj = document.getElementById("fade-obj");
+        var btn = document.getElementById("fade-btn");
+        var opacityVal = 1.0;
+        function fadeOutStart(){
+            opacityVal -= 0.02;
+            obj.style.opacity = opacityVal;
+            btn.disabled = true;
+            setEvent1 = setTimeout(fadeOutStart, 100);
+            setEvent2 = setTimeout(fadeOutEnd, 0); 
+        }
+        function fadeOutEnd(){
+            if (opacityVal < 0){
+                clearTimeout(setEvent1);
+                clearTimeout(setEvent2);
+                btn.disabled = false;
+                btn.innerHTML = "淡入";
+            }
+        }
+        btn.addEventListener("click", fadeOutStart);
+        btn.addEventListener("click", fadeOutEnd);
+        function fadeInStart(){
+            opacityVal += 0.02;
+            obj.style.opacity = opacityVal;
+            btn.disabled = true;
+            setEvent3 = setTimeout(fadeInStart, 100);
+            setEvent4 = setTimeout(fadeInEnd, 0);
+        }
+        function fadeInEnd(){
+            if (opacityVal > 1.0){
+                clearTimeout(setEvent3);
+                clearTimeout(setEvent4);
+                btn.disabled = false;
+                btn.innerHTML = "淡出";
+            }
+        }
+        btn.addEventListener("click", fadeInStart);
+        btn.addEventListener("click", fadeInEnd);
+    </script>
+</body>
+</html>

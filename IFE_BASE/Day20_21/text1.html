@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day20~21 text1</title>
+</head>
+<body>
+    <input id="name" type="text" />    
+    <button id="submit-btn">Submit</button>
+    <p id="display"></p>
+
+    <script>
+        var input = document.getElementById("name");
+        var btn = document.getElementById("submit-btn");
+        btn.onclick = handleEvent;
+        
+        function handleEvent(){
+            var p = document.getElementById("display");
+            p.innerHTML = input.value;
+            console.log(input.value);
+        }
+        function inputEvent(){
+            var p = document.getElementById("display");
+            if (event.keyCode===13){
+                p.innerHTML = input.value;
+                console.log(input.value);
+            }else if (event.keyCode===27){
+                p.innerHTML = "";
+                input.value = "";
+            }
+        }
+        input.onkeypress =inputEvent;
+    </script>
+</body>
+</html>
