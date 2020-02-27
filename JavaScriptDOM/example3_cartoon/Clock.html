@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>My Clock</title>
+</head>
+<body>
+    <ul id="Control">
+        <li><button id="Start-btn">Sart</button></li>
+        <li><button id="Stop-btn">Stop</button></li>
+    </ul>
+    <h2>The Time</h2>
+    <p id="display"></p>
+
+    <script>
+        var control = document.getElementById("Control");
+        var p = document.getElementById("display");
+        control.addEventListener("click", eventHandler, false);
+        function eventHandler(event){
+            var event = event || window.event;
+            var target = event.target || srcElement;
+            switch (target.id){
+                case "Start-btn": event1 = setInterval(startClock, 1000);
+                        break;
+                case "Stop-btn": stopClock(event1);
+                        break;
+                default: alert("Something wrong!");
+            }
+        } 
+        var startClock = function (){
+            var time = new Date();
+            var localTime = time.toLocaleString();
+            p.innerHTML = localTime;
+        }
+        function stopClock(event1){
+            clearInterval(event1);
+            p.innerHTML = "";
+        }
+    </script>
+</body>
+</html>
