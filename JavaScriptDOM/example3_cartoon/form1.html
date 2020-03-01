@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Form1 Example</title>
+</head>
+<body>
+    <h3>input form</h3>
+    <ul class="form">
+        <li><label for="name">Name</label><input id="name" type="text" value="Name"/></li>
+        <li><label for="age">Age</label><input id="age" type="text" value="Age"/></li>
+        <li><label for="passord">Passord</label><input id="password" type="password" /></li>
+    </ul>
+    <p id="display"></p>
+
+    <script>
+        var form = document.getElementsByClassName("form")[0];
+        var name = form.getElementsById("name");
+        var age = form.getElementsById("age");
+        form.onfocus = function(){
+            focusHandler();
+        }
+        form.onblur = function(){
+            blurHandler();
+        };
+        function focusHandler(event){
+            var event = window.event || event;
+            var target = srcElement || event.target;
+            var text = target.value;
+            if (target.value === text)
+                target.value = "";
+        }
+        function blurHandler(event){
+            var event = window.event || event;
+            var target = srcElement || event.target;
+            var text = target.value;
+            if (target.value === "")
+                target.value = text;
+        }
+    </script>
+</body>
+</html>
