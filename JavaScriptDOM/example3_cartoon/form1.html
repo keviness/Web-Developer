@@ -15,17 +15,11 @@
 
     <script>
         var form = document.getElementsByClassName("form")[0];
-        var name = form.getElementsById("name");
-        var age = form.getElementsById("age");
-        form.onfocus = function(){
-            focusHandler();
-        }
-        form.onblur = function(){
-            blurHandler();
-        };
+        form.addEventListener("focus", focusHandler, false);
+        form.addEventListener("blur", blurHandler, false);
         function focusHandler(event){
             var event = window.event || event;
-            var target = srcElement || event.target;
+            var target = element.srcElement || event.target;
             var text = target.value;
             if (target.value === text)
                 target.value = "";

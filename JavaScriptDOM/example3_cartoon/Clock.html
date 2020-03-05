@@ -18,7 +18,7 @@
         control.addEventListener("click", eventHandler, false);
         function eventHandler(event){
             var event = event || window.event;
-            var target = event.target || srcElement;
+            var target = event.target || event.srcElement;
             switch (target.id){
                 case "Start-btn": event1 = setInterval(startClock, 1000);
                         break;
