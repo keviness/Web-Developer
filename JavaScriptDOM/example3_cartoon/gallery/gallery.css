@@ -46,4 +46,6 @@ h3{
 }
 #display_area .display img{
     position: absolute;
+    left: 0;
+    top: 0;
 }

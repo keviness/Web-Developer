@@ -12,27 +12,23 @@ function addLoadEvent(func){
     }
 }
 function prepareGallery(){
-    var ul = document.getElementsByTagName("ul")[0];
-    var display = document.getElementsByClassName("display")[0];
-    var element = document.getElementsByTagName("img")[0];
-    ul.addEventListener("mouseover", eventHandler, false);
-    function eventHandler(event){
-        var event = event || window.event;
-        var target = event.target || event.srcElement;
-        switch (target.id){
-            case "first":moveElement(element, -300, 0, 10);
-                    break;
-            case "second":moveElement(element, -600, 0, 10);
-                    break;
-            case "third": moveElement(element,-900, 0, 10);
-                    break;
-            default: alert("The programe is wrong!");
-        }
+    var first = document.getElementById("first");
+    var second = document.getElementById("second");
+    var third = document.getElementById("third");
+    var img = document.getElementsByTagName("img")[0];
+    img.style.position = "absolute";
+    first.onmouseover = function(){
+        moveElement("img", -300, 0, 10);
+    }
+    second.onmouseover = function(){
+        moveElement("img", -600, 0, 10);
+    }
+    third.onmousemove = function(){
+        moveElement("img", -900, 0, 10);
     }
 }
-function moveElement(element, final_x, final_y, interval){
-    var xpox = parseInt(element.style.left);
-    var ypox = parseInt(element.style.top);
+function moveElement(elementId, final_x, final_y, interval){
+    var element = document.getElementsByTagName(elementId)[0];
     
     if (!element.style.left){
         element.style.left = "0px";
@@ -40,6 +36,8 @@ function moveElement(element, final_x, final_y, interval){
     if (!element.style.top){
         element.style.top = "0px";
     }
+    var xpox = parseInt(element.style.left);
+    var ypox = parseInt(element.style.top);
     if (element.movement){
         clearTimeout(element.movement);
     }
@@ -62,8 +60,8 @@ function moveElement(element, final_x, final_y, interval){
         var dis = Math.ceil((ypox-final_y)/10);
         ypox -= dis;
     }
-    element.style.left = xpox + "px";
-    element.style.top = ypox + "px";
+    element.style.left = "" + xpox + "px";
+    element.style.top = "" +ypox + "px";
     element.movement = setTimeout(moveElement, interval);
 }
 addLoadEvent(prepareGallery);
