@@ -13,9 +13,27 @@
         $(function(){
             $("#control li:odd").css("background-color","red");
         })
+        $(function(){
+            $("#control li").css({"color":"green"})
+        })
+        $("#control").onclick(function(){
+            event = event || window.event;
+            target = event.target || event.srcElement;
+            $(target).css("color","green");
+        })
+        $("#time-btn").onclick(function(){
+            var time = new Date();
+            var time_str = time.toLocaleString();
+            alert(time_str)
+            $("#display p").html(time_str);
+        })
     </script>
 </head>
 <body>
+    <input id="time-btn" type="button" value="getTime" />
+    <div id="display">
+        <p>The now time</p>
+    </div>
     <div id="control">
         <ul>
             <li>first</li>
