@@ -6,6 +6,7 @@
     <script src="../jquery/jquery-3.3.1.min.js" type="text/javascript"></script>
 </head>
 <body>
+    <input id="hidden-menu" type="button" value="display">
     <input id="time-btn" type="button" value="getTime" />
     <div id="control">
         <ul>
@@ -25,21 +26,24 @@
         }
         $(function(){
             $("#control li:odd").css("background-color","red");
+            $("#control li").css({"color":"green"});
+            $(this).click(function(){
+                $(this).css({"backround-color":"blue"});
+            })
         })
-        $(function(){
-            $("#control li").css({"color":"green"})
-        })
-        
         $("#time-btn").click(function(){
             var time = new Date();
             var time_str = time.toLocaleString();
             alert(time_str)
             $("#display p").html(time_str);
         })
-        $("#control ul").click(function(){
-            event = window.event || event;
-            target = event.target || event.srcElement;
-            target.css({"background-color":"red"})
+        $(function(){
+            $("#display").hover(function(){
+                $("#control li").css("display", "block");
+            },
+            function(){
+                $("#control li").css("display", "none");
+            })
         })
     </script>
 </body>
