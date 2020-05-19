@@ -1,0 +1,49 @@
+<!--JavaScript Number Object-->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>JavaScript Number Object</title>
+    <script>
+        var str="how are you doing？";
+        var result="";
+        for(var i=0;i<str.length;i++)
+        {
+            if(str.charAt(i)<"s")
+            {
+                result+=str.charAt(i)+",";
+            }
+        }
+        document.write(result);
+    /*
+        function charHandle(){
+            var str = document.getElementsByName("string")[0];
+            var char = document.getElementsByName("char")[0];
+            var result;
+            for (var i=0; i<str.length; i++)
+            {
+                if (str.charAt(i) < char)
+                {
+                    result += str.charAt(i) + " ";
+                }
+            }
+            document.write(result);
+        }
+        var btn = document.getElementsByTagName("button")[0];
+        btn.onclick = function(){
+            charHandle();
+        }
+    */
+    </script>
+</head>
+<body>
+    String: <input name="string" type="text" value="a string" size="20" maxlength="10"/>
+    Char: <input name="char" type="text" value="a char" size="5" maxlength="1"/>
+    <button>result</button>
+    <br/>
+    Result: 
+    <p>
+        Result:
+    </p>
+</body>
+</html>
