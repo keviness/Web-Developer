@@ -15,9 +15,17 @@
 | Day20~21 | 让你和页面对话 |[code](./IFE_BASE/Day19) | [preview](https://keviness.top/Web-Developer/IFE_BASE/Day20_21/text1.html)|
 
 ### JavaScriptDOM
-#### index
+#### Index
 | Examples | Descriptions | Codes |
 |:----------------:|:--------------:|:-------:|
 | example1| gallery | [code](./JavaScriptDOM/example1_gallery)  |
 | example2| DOM-html| [code](./JavaScriptDOM/example2_avtiveCreate) |
 | example3| DOM-CSS | [code](./JavaScriptDOM/example3_cartoon)|
+
+### JavaScript
+#### Index
+| Examples | Descriptions | Codes |
+|:--------:|:------------:|:-----:|
+| Example1 | Number Object | [Example](./JavaScript/Lvye_JavaScript/example1.html) |
+| Example2 | String Object | [Example](./JavaScript/Lvye_JavaScript/example2.html) |
+| Example3 | String Object | [Example](./JavaScript/Lvye_JavaScript/example3.html) |

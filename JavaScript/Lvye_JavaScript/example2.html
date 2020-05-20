@@ -1,0 +1,30 @@
+<!--string handle--->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>string handle</title>
+    <script type="text/javascript">
+        function strNum()
+        {
+            var s = document.getElementById("num").value;
+            var s1="";
+            for(var i=0;i<4;i++)
+            {
+                if(i===3)
+                {
+                    s1+=s.charAt(i);
+                }
+                else
+                {
+                    s1+=s.charAt(i) + " ";
+                }
+            }
+            alert(s1);
+        }
+    </script>
+</head>
+<body>
+    输入数字是：<input type="text" id="num"/><br/>
+    <input type="button" onclick="strNum()" value="提交"/>
+</body>
+</html>

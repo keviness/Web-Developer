@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>example 3</title>
+    <style type="text/css">
+        #txt-input,#txt-output
+        {
+            height:60px;
+        }
+    </style>
+    <script type="text/javascript">
+        function encrypt() 
+        {
+            var str = document.getElementById("txt-input").value;
+            document.getElementById("txt-output").value = escape(str);
+        }
+        function decrypt() 
+        {
+            var str = document.getElementById("txt-input").value;
+            document.getElementById("txt-output").value = unescape(str);
+        }
+    </script>
+</head>
+<body>
+    <form>
+        <textarea id="txt-input" cols="20"></textarea><br />
+        <input id="btn-encrypt" type="button" value="加密" onclick="encrypt()"/>
+        <input id="btn-decrypt" type="button" value="解密" onclick="decrypt()"/>
+        <input id="Reset1" type="reset" value="清空" /><br />
+        <textarea id="txt-output" cols="20"></textarea>
+    </form>
+</body>
+</html>
