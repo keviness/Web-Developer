@@ -1,0 +1,50 @@
+<!--face moving--->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day20~21 test6</title>
+    <style>
+        #erik_face{
+        margin: 0 auto;
+        width: 480px;
+        height: 480px;
+        background-color: rgb(231, 231, 223);
+        background-image: url(./erik_face.jpg);
+        background-position: 0px -480px;
+        background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body>
+    <div id="erik_face"></div>
+</body>
+    <script>
+        var erik_face,
+        faceHeight,
+        pattern,
+        ypos;
+
+        pattern = 0;
+        ypos = 0;
+        erik_face = document.getElementById("erik_face");
+        faceHeight = parseInt(window.getComputedStyle(erik_face,null).height);
+        function movePic(minYpos, maxYpos){
+            if (pattern === 0){
+                ypos -= faceHeight;
+            }
+            if (pattern === 1){
+                ypos += faceHeight;
+            }
+
+            if (ypos < minYpos){
+                pattern = 1;
+            }
+            if (ypos > maxYpos){
+                pattern = 0;
+            }
+            erik_face.style.backgroundPosition = "0 " + ypos + "px";
+        }
+        setInterval(movePic, 100, -16*faceHeight, 0);
+    </script>
+</html>
