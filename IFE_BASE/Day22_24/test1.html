@@ -22,10 +22,10 @@
     </div>
     <p id="result"></p>
 </body>
-<script>
-    function isNumber(num1){
-        if (num1!==null && num1!= ""){
-            return !isNaN(num1);
+<script type="text/javascript">
+    function isNumber(num){
+        if (num!==null && num!==""){
+            return !isNaN(num);
         }
         return false;
     }
@@ -51,18 +51,18 @@
         return Math.min(num1, num2);
     }
 
-    var radios = document.getElementsByTagName("math-obj");
+    var radios = document.getElementsByName("math-obj");
     var buttons = document.getElementsByTagName("button");
     var result = document.getElementById("result");
     var aNum = document.getElementById("num-a");
     var bNum = document.getElementById("num-b");
 
     buttons[0].onclick = function(event){
-        var select;
+        var selected;
         var num;
         for (var i=0; i<radios.length; i++){
             if (radios[i].checked){
-                select = radios[i];
+                selected = radios[i];
                 break;
             }
         }
