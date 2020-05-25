@@ -1,0 +1,51 @@
+<!-- Day22~24 test8 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day22~24 test8</title>
+</head>
+<body>
+    <input id="stack-input" type="text">
+    <p id="stack-cont">栈内容：applelt;-pear</p>    
+    <button id="push-btn">进栈</button>
+    <button id="pop-btn">退栈</button>
+    <button id="font-btn">打印栈顶元素内容</button>
+    <button id="empty-btn">判断栈是否为空</button>
+
+    <script>
+    var stack = ["apple", "pear"];
+    var btns,
+        stackInput,
+        stackOutput,
+        stackContent;
+
+    btns = document.getElementsByTagName("button");
+    stackInput = document.getElementById("stack-input");
+    stackOutput = document.getElementById("stack-cont");
+
+    btns[0].onclick = function(event){
+        stackContent = stackInput.value;
+        if (stackContent !== ""){
+            stack.push(stackContent);
+        }
+        stackOutput.innerHTML = "The result:" + stack.join("<-");
+        stackInput.value = "";
+    }
+
+    btns[1].onclick = function(event){
+        stack.pop();
+        stackOutput.innerHTML = "The result:" + stack.join("<-");
+    }
+
+    btns[2].onclick = function(event){
+        stackOutput.innerHTML = "The first element: " + stack[0];
+        console.log("The first element:" + stack[0]);
+    }
+
+    btns[3].onclick = function(event){
+        stack.length === 0? console.log("The stack is empty!"):console.log("The stack is not empty!");
+    }
+    </script>
+</body>
+</html>
