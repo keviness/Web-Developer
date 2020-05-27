@@ -1,0 +1,96 @@
+<!-- Day25~27 test2 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day25~27 test2</title>
+</head>
+<body>
+    <div id="wrapper">
+        <p id="result1"></p>
+        <p id="result2"></p>
+    </div>
+
+    <script type="text/javascript">
+        //显示：2008年01月01日星期一 03:02:02
+        function getDayZh(date) {
+            var weekDay;
+            weekDay = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+            return weekDay[date.getDay()];
+        }
+
+        function checkTime(n) {
+            n = (n < 10? "0"+n:""+n);
+            return n;
+        }
+
+        function displayCurrentTime1() {
+            var year,
+                month,
+                day,
+                weekDay,
+                hours,
+                minutes,
+                seconds;
+
+            var result1 = document.getElementById("result1");
+            var date = new Date();
+            year = date.getFullYear() + "年";
+            month = checkTime(date.getMonth()+1) + "月";
+            day = checkTime(date.getDate()) + "日" + " ";
+            weekDay = getDayZh(date);
+            hours = checkTime(date.getHours()) + ":";
+            minutes = checkTime(date.getMinutes()) + ":";
+            seconds = checkTime(date.getSeconds());
+            result1.innerHTML = "" + year + month + day + weekDay + " " + hours + minutes + seconds;
+        }
+        setInterval(displayCurrentTime1, 1000);
+
+        //显示：2008-10-10 Monday 07:10:30 PM
+        function getDayEn(date) {
+            var weekDay = ["Sunday", "Monday", "Tuesday", "Wensday", "Thursday", "Friday", "Saturday"];
+            return weekDay[date.getDay()];
+        }
+
+        function createTimeFormat(date) {
+            var hours,
+                minutes,
+                seconds,
+                timeStr,
+                AmPm;
+            
+            hours = date.getHours();
+            minutes = date.getHours();
+            seconds = date.getSeconds();
+            AmPm = hours >= 12? "AM":"PM";
+            hours = hours % 12;
+            hours = "" + hours + ":";
+            minutes = "" + minutes + ":";
+            seconds = "" + seconds;
+            timeStr = hours + minutes + seconds + " " + AmPm;
+
+            return timeStr;
+        }
+
+        function displayCurrentTime2() {
+            var year,
+                month,
+                day,
+                timeStr,
+                weekDay;
+
+            var result2 = document.getElementById("result2");
+            var date = new Date();
+
+            year = date.getFullYear() + "-";
+            month = checkTime(date.getMonth()+1) + "-";
+            day = checkTime(date.getDate()) + " ";
+            weekDay = getDayEn(date) + " ";
+            timeStr = createTimeFormat(date);
+
+            result2.innerHTML = year + month + day + weekDay + timeStr;
+        }
+        setInterval(displayCurrentTime2, 1000);
+    </script>
+</body>
+</html>
