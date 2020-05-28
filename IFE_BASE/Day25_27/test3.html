@@ -246,30 +246,33 @@
       <p id="result-wrapper"></p>
 </body>
 <script>
-    function hidenItems(element) {
+    function hideItems(element) {
         element.style.display = "none";
         
     }
+    function showItems(element) {
+        element.style.display = "block";
+    }
 
     function isLeapYear(year) {
-        return ((year%4===0 && year%100===0) || year%400===0);
+        return ((year%4===0 && year%100!==0) || year%400===0);
     }
 
     function getSelectedValue(Id) {
         var options,
             selectedObj;
         selectedObj = document.getElementById(Id);
-        options = selectedObj.getElementsByTagName("options");
+        items = selectedObj.options;
 
-        for (var i=0; i<options.length; i++) {
-            if (options[i].selected) {
-                return options[i].value;
+        for (var i=0; i<items.length; i++) {
+            if (items[i].selected) {
+                return items[i].value;
             }
         }
     }
 
     function checkTime(num) {
-        return num > 10? ""+n:"0"+n; 
+        return num > 10? ""+num:"0"+num; 
     }
 
     function dayOfMonthHandle() {
@@ -280,30 +283,111 @@
         year = getSelectedValue("year-select");
         month = getSelectedValue("month-select");
         day = getSelectedValue("day-select");
-        element1 = document.querySelector("#day-select").children[28];  //29
-        element2 = document.querySelector("#day-select").children[29];  //30
-        element3 = document.querySelector("#day-select").children[30];  //31
-
+        element1 = document.querySelector("#day-select").options[28];  //29
+        element2 = document.querySelector("#day-select").options[29];  //30
+        element3 = document.querySelector("#day-select").options[30];  //31
+        month = parseInt(month);
         switch (month) {
+            case 1: case 3: case 5: case 7: case 8: case 10: case 12:
+                showItems(element1);
+                showItems(element2);
+                showItems(element3);
+                break;
             case 4: case 6: case 9: case 11:
-            if (element3) {
-                hidenItem(element3);
-            }
+                showItems(element1);
+                showItems(element2);
+                hideItems(element3);
             break;
             case 2:
-            if (element2) {
-                hidenItems(element2);
-            }
-            if (element3) {
-                hidenItems(element3);
-            }
-            if (!isLeapYear(year) && element1) {
-                hidenItems(element1);
+                hideItems(element2);
+                hideItems(element3);
+                showItems(element1);
+            if (!isLeapYear(year)) {
+                hideItems(element1);
             }
             break;
         }
-        
+        document.querySelector("#day-select option:first-child").selected = "true";
     }
-    dayOfMonthHandle();
+    var yearSelect = document.querySelector("#year-select");
+    var monthSelect = document.querySelector("#month-select");
+
+    yearSelect.onclick = dayOfMonthHandle;
+    monthSelect.onclick = dayOfMonthHandle;
+
+    //显示：现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒
+    function selectTime() {
+        var dateValue,
+            year,
+            month,
+            day,
+            week,
+            weekDay,
+            hours,
+            minutes,
+            seconds,
+            strValue,
+            resultObject;
+
+        resultObject = {};
+        year = getSelectedValue("year-select");
+        month = getSelectedValue("month-select");
+        day = getSelectedValue("day-select");
+        hours = getSelectedValue("hour-select");
+        minutes = getSelectedValue("minute-select");
+        seconds = getSelectedValue("second-select");
+        dateValue = new Date(year, month-1, day, hours, minutes, seconds);
+        resultObject.dateValue = dateValue;
+        week = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        weekDay = week[dateValue.getDay()];
+        strValue = "" + year + "年" + checkTime(month) + "月" + checkTime(day) + "日" + weekDay + " ";
+        strValue += checkTime(hours) + ":" + checkTime(minutes) + ":" + checkTime(seconds);
+        resultObject.strValue = strValue;
+
+        return resultObject;
+    }
+
+    function diffTime() {
+        var now_date,
+            selected_date,
+            diff_time,
+            year,
+            month,
+            day,
+            hours,
+            minutes,
+            seconds,
+            strValue;
+
+        now_date = new Date();
+        selected_date = selectTime().dateValue;
+        diff_time = new Date(Math.abs(now_date-selected_date));
+        year = diff_time.getUTCFullYear() - 1970;
+        month = diff_time.getUTCMonth();
+        day = diff_time.getUTCDay() - 4;
+        hours = diff_time.getUTCHours();
+        minutes = diff_time.getUTCMinutes();
+        seconds = diff_time.getUTCSeconds();
+        strValue = "";
+        strValue += (now_date-selected_date) > 0? "已过去":"还有" +" ";
+        strValue += year <= 0? "":""+ year + "年" + " ";
+        strValue += month <=0? "":"" + month + "个月" + " ";
+        strValue += day<=0? "":"" + day + "天" + " ";
+        strValue += hours + "小时" + " " + minutes + "分钟" + " " + seconds + "秒";
+
+        return strValue;
+    }
+
+    //显示：现在距离 2001年1月1日星期X HH:MM:SS 还有 X 天 X 小时 X 分 X 秒
+    function displayTime() {
+        var result,
+            str_result;
+
+        result = document.getElementById("result-wrapper");
+        str_result = "现在距离 " + selectTime().strValue + " " + diffTime();
+        result.innerHTML = str_result;
+    }
+
+    setInterval(displayTime, 1000);
 </script>
 </html>
