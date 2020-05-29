@@ -1,0 +1,89 @@
+<!-- Day28~30 task1 -->
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day28~30 task1</title>
+</head>
+<body>
+    <div class="wrapper">
+        <input id="email-input" type="text">
+        <ul id="email-sug-wrapper" class="email-sug"></ul>
+    </div>
+
+    <script>
+        //流程：发现用户输入->获取用户输入内容->生成提示框提示内容->进行提示
+        var emailSugBox,
+            eamilInput;
+        eamilInput = document.querySelector("#email-input"); 
+        emailSugBox = document.querySelector("#email-sug-wrapper");
+        eamilInput.oninput = function() {
+            var input,
+                resultHTML;
+
+                input = getInput();
+                resultHTML = generateSuggestion(input);
+                commitToSugBox(resultHTML);
+                toggleSugBox(input);
+        }
+
+        //获取用户输入
+        function getInput() {
+            return eamilInput.value.trim();
+        }
+
+        //生成提示框中的提示内容
+        function generateSuggestion(input) {
+            var i,
+                postfixList,
+                resultHTML,
+                handleInput; 
+            postfixList = ['163.com', 'gmail.com', '126.com', 'qq.com', '263.net'];
+            resultHTML = "";
+            handleInput = inputHandle(input);
+            for (i=0; i<postfixList.length; i++) {
+                resultHTML += "<li>" + handleInput + "@" + postfixList[i] + "</li>";
+            }
+
+            return resultHTML;
+        }
+
+        //将提示内容添加到email-sug-wrapper
+        function commitToSugBox(resultHTML) {
+            emailSugBox.innerHTML = resultHTML;
+        }
+        //控制email-sug-wrapper的显示/隐藏状态
+        function toggleSugBox(input) {
+            if (!input) {
+                hideSugBox();
+            } else {
+                showSugBox();
+            }
+        }
+
+        //隐藏提示框
+        function hideSugBox() {
+            emailSugBox.style.display = "none";
+        }
+        //显示提示框
+        function showSugBox() {
+            emailSugBox.style.display = "block";
+        }
+
+        //优化函数
+        function inputHandle(input) {
+            var handledInput,
+                index;
+
+            handledInput = "";
+            index = input.indexOf("@");
+            if (index !== -1) {
+                handledInput += input.slice(0, index);
+                return handledInput;
+            }
+            return input;
+            
+        }
+    </script>
+</body>
+</html>
