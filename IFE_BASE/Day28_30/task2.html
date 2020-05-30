@@ -4,6 +4,47 @@
 <head>
     <meta charset="UTF-8"/>
     <title>Day28~30 task2</title>
+    <style type="text/css">
+        *{
+            margin: 0;
+            box-sizing: border-box;
+        }
+        .wrapper{
+            position: relative;
+            width: 960px;
+            margin: 100px auto;
+            font-size: 17px;
+        }
+        #email-input{
+            position: absolute;
+            top: 0;
+            left: 40%;
+            width: 300px;
+            height: 35px;
+            border: 1px solid black;
+            border-radius: 5px;
+            font-size: 17px;
+        }
+        #email-sug-wrapper{
+            position: absolute;
+            top: 30px;
+            left: 40%;
+            width: 300px;
+            list-style-type: none;
+        }
+        #email-sug-wrapper li{
+            margin-left: -40px;
+            height: 35px;
+            line-height: 35px;
+            border: 1px solid rgb(209, 197, 197);
+            border-top: 0;
+        }
+        #email-sug-wrapper li:hover{
+            background-color: pink;
+        }#email-sug-wrapper li:visited{
+            background-color: aqua;
+        }
+    </style>
 </head> 
 <body>
     <div class="wrapper">
@@ -11,7 +52,7 @@
         <ul id="email-sug-wrapper" class="email-sug"></ul>
     </div>
 
-    <script>
+    <script type="text/javascript">
         //流程：发现用户输入->获取用户输入内容->生成提示框提示内容->进行提示
         var emailSugBox,
             eamilInput;
@@ -25,6 +66,7 @@
                 resultHTML = generateSuggestion(input);
                 commitToSugBox(resultHTML);
                 toggleSugBox(input);
+                pickSuggestion();
         }
 
         //获取用户输入
@@ -98,6 +140,19 @@
                 return handledInput;
             }
             return input;
+        }
+
+        //优化函数二：将选中的项的提示提交到建议框
+        function pickSuggestion() {
+            var suggestion;
+
+            emailSugBox.onclick = function(event) {
+                if (event.target.nodeName.toLowerCase() === "li") {
+                    suggestion = event.target.innerHTML;
+                    eamilInput.value = suggestion;
+                    hideSugBox();
+                }
+            }
         }
 
     </script>
