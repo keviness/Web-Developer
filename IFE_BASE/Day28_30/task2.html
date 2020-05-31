@@ -71,7 +71,7 @@
 
         //获取用户输入
         function getInput() {
-            return eamilInput.value.trim();
+            return encode(eamilInput.value.trim());
         }
 
         //生成提示框中的提示内容
@@ -149,12 +149,36 @@
             emailSugBox.onclick = function(event) {
                 if (event.target.nodeName.toLowerCase() === "li") {
                     suggestion = event.target.innerHTML;
-                    eamilInput.value = suggestion;
+                    eamilInput.value = decode(suggestion);
                     hideSugBox();
                 }
             }
         }
 
+        //优化函数三：XSS攻防（Cross Site Script）、JavaScrit编码和解码
+        function encode(html) {
+            var temp,
+                output;
+
+            temp = document.createElement("div");
+            (temp.innerText != "undefined")? (temp.innerText = html):(temp.textContent = html);
+            output = temp.innerHTML;
+            temp = null;
+
+            return output; 
+        }
+
+        function decode(text){
+            var temp,
+                output;
+
+            temp = document.createElement("div");
+            temp.innerHTML = text;
+            output = temp.innerText || temp.textContent;
+            temp = null;
+
+            return output;
+        }
     </script>
 </body>
 </html>
