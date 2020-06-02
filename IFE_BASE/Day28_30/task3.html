@@ -1,4 +1,4 @@
-<!-- Day28~30 task2 -->
+<!-- Day28~30 task3: base with data -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -44,6 +44,9 @@
         }#email-sug-wrapper li:visited{
             background-color: aqua;
         }
+        .selected{
+            background-color: aquamarine;
+        }
     </style>
 </head> 
 <body>
@@ -56,6 +59,8 @@
         //流程：发现用户输入->获取用户输入内容->生成提示框提示内容->进行提示
         var emailSugBox,
             eamilInput;
+        var nowSelectTipIndex;
+
         eamilInput = document.querySelector("#email-input"); 
         emailSugBox = document.querySelector("#email-sug-wrapper");
         eamilInput.oninput = function() {
@@ -65,8 +70,8 @@
                 input = getInput();
                 resultHTML = generateSuggestion(input);
                 commitToSugBox(resultHTML);
+                KeyboardMouseHandle();
                 toggleSugBox(input);
-                pickSuggestion();
         }
 
         //获取用户输入
@@ -180,6 +185,42 @@
 
             return output;
         }
+
+        //优化函数四：加入键盘事件
+        function KeyboardMouseHandle() {
+            var liCount,
+                liSelected;
+            liCount = emailSugBox.childElementCount;
+
+            if (liCount > 0) {
+                liSelected = emailSugBox.firstChild;
+                liSelected.setAttribute("class", "selected");
+            }
+            //键盘事件处理：基于DOM
+            eamilInput.onkeyup = function(event) {
+                var pressKeyCode;
+                pressKeyCode = event.keycode;
+
+                if (pressKeyCode===38 || pressKeyCode===40 || pressKeyCode===13) {
+                    if (pressKeyCode===38) {
+                        liSelected.removeAttribute("class");
+                        liSelected = (liSelected===emailSugBox.firstChild)? emailSugBox.lastChild:liSelected.previousSibling;
+                        liSelected.setAttribute("class", "selected");
+                    }else if (pressKeyCode===40) {
+                        liSelected.removeAttribute("class");
+                        liSelected = (liSelected===emailSugBox.lastChild)? emailSugBox.firstChild:liSelected.nextSibling;
+                        liSelected.setAttribute("class", "selected");
+                    }else {
+                        eamilInput.value = decode(liSelected.innerHTML);
+                        hideSugBox();
+                    }
+                }
+                else{
+                    pickSuggestion();
+                }
+            }
+        }
+
     </script>
 </body>
 </html>
