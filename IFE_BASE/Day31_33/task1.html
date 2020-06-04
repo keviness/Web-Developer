@@ -16,7 +16,56 @@
     </div>
     <script type="text/javascript">
         //获得数据
+        function getSelectedValue() {
+            var regionValue,
+                index,
+                result;
 
+            index = document.querySelector("#region").selectedIndex;
+            regionValue = document.querySelector("#region").options[index].value;
+            return sourceData.filter(function(item, index, array){
+                return item.region === regionValue;
+            });
+        }
+        //制作表格：
+        function createTable(data) {
+            var tableHTML,
+                tableWrapper,
+                rows,
+                values,
+                i,
+                j;
+
+            tableHTML = '';
+            tableHTML += '<table border="1", width ="80%", style = "text-align:center">';
+            tableHTML += '<tr><th>Product</th><th>Reigon</th><th>1月</th><th>2月</th><th>3月</th>';
+            tableHTML += '<th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>10月</th>';
+            tableHTML += '<th>11月</th><th>12月</th></tr>';
+            rows = "";
+            for (i=0; i<data.length; i++) {
+                rows += "<tr>";
+                rows += "<td>" + data[i].product + "</td>";
+                rows += "<td>" + data[i].region + "</td>";
+                for (j=0; j<data[i].sale.length; j++) {
+                    rows += "<td>" + data[i].sale[j] + "</td>";
+                }
+                rows += "</tr>";
+            }
+            tableHTML += rows;
+            tableHTML += '</table>';
+            tableWrapper = document.querySelector("#table-wrapper");
+            tableWrapper.innerHTML = tableHTML;
+        }
+
+        //事件控制：
+        function selectEventHandle() {
+            var regionSelect = document.querySelector("#region");
+
+            regionSelect.onchange = function(event) {
+                createTable(getSelectedValue());
+            }
+        }
+        window.onload = selectEventHandle;
     </script>
 </body>
 </html>
