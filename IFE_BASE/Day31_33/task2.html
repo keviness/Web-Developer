@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day31~33 task1</title>
+    <script type="text/javascript" src="ife31data.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <select id="region">
+            <option value="华东">华东</option>
+            <option value="华南">华南</option>
+            <option value="华北">华北</option>
+        </select>
+        <select id="product">
+            <option value="手机">手机</option>
+            <option value="笔记本">笔记本</option>
+            <option value="智能音箱">智能音箱</option>
+        </select>
+        <div id="table-wrapper"></div>
+    </div>
+    <script type="text/javascript">
+        //获得数据
+        function getSelectedData(Id) {
+            var data;
+            
+            data = sourceData;
+            //过滤Data
+            if (Id === "region") {
+                data = data.filter(function(item, index, array) {
+                    return item.region === getSelectedValue("region");
+                });
+            }
+            if (Id === "product") {
+                data = data.filter(function(item, index, array) {
+                    return item.product === getSelectedValue("product");
+                })
+            }
+            return data;
+        }
+        //制作表格：
+        function createTable(data) {
+            var tableHTML,
+                tableWrapper,
+                rows,
+                values,
+                i,
+                j;
+
+            tableHTML = '';
+            tableHTML += '<table border="1", width ="80%", style = "text-align:center">';
+            tableHTML += '<tr><th>Product</th><th>Reigon</th><th>1月</th><th>2月</th><th>3月</th>';
+            tableHTML += '<th>4月</th><th>5月</th><th>6月</th><th>7月</th><th>8月</th><th>9月</th><th>10月</th>';
+            tableHTML += '<th>11月</th><th>12月</th></tr>';
+            rows = "";
+            for (i=0; i<data.length; i++) {
+                rows += "<tr>";
+                rows += "<td>" + data[i].product + "</td>";
+                rows += "<td>" + data[i].region + "</td>";
+                for (j=0; j<data[i].sale.length; j++) {
+                    rows += "<td>" + data[i].sale[j] + "</td>";
+                }
+                rows += "</tr>";
+            }
+            tableHTML += rows;
+            tableHTML += '</table>';
+            tableWrapper = document.querySelector("#table-wrapper");
+            tableWrapper.innerHTML = tableHTML;
+        }
+/*
+        //获取选项
+        function selectItems() {
+            var selects,
+                items,
+                i;
+
+            items = [];
+            selects = document.querySelectorAll("selection");
+            for (i=0; i<selects.length; i++) {
+                items.push(selects[i].id);
+            }
+
+            return items;
+        }
+*/
+        //获取值：
+        function getSelectedValue(Id) {
+            var index,
+                selectValue,
+                selectedObj;
+
+            selectedObj = document.querySelector("#"+Id);
+            index = selectedObj.selectedIndex;
+            selectValue = selectedObj.options[index].value;
+
+            return selectValue;
+        }
+
+        //事件控制：
+        function selectEventHandle() {
+            var regionSelect = document.querySelector("#region");
+            var productSelect = document.querySelector("#product");
+            regionSelect.onchange = function(event) {
+                createTable(getSelectedData("region"));
+            }
+            productSelect.onchange = function(event) {
+                createTable(getSelectedData("product"));
+            }
+        }
+        window.onload = selectEventHandle;
+    </script>
+</body>
+</html>
