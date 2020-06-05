@@ -21,20 +21,23 @@
     </div>
     <script type="text/javascript">
         //获得数据
-        function getSelectedData(Id) {
-            var data;
-            
+        function getSelectedData() {
+            var data,
+                selections;
+            selections = selectItems();
             data = sourceData;
             //过滤Data
-            if (Id === "region") {
-                data = data.filter(function(item, index, array) {
-                    return item.region === getSelectedValue("region");
-                });
-            }
-            if (Id === "product") {
-                data = data.filter(function(item, index, array) {
-                    return item.product === getSelectedValue("product");
-                })
+            for (var i=0; i<selections.length; i++){
+                if (selections[i] === "region") {
+                    data = data.filter(function(item, index, array) {
+                        return item.region === getSelectedValue("region");
+                    });
+                }
+                if (selections[i] === "product") {
+                    data = data.filter(function(item, index, array) {
+                        return item.product === getSelectedValue("product");
+                    });
+                }
             }
             return data;
         }
@@ -67,7 +70,7 @@
             tableWrapper = document.querySelector("#table-wrapper");
             tableWrapper.innerHTML = tableHTML;
         }
-/*
+
         //获取选项
         function selectItems() {
             var selects,
@@ -75,14 +78,14 @@
                 i;
 
             items = [];
-            selects = document.querySelectorAll("selection");
+            selects = document.querySelectorAll("select");
             for (i=0; i<selects.length; i++) {
                 items.push(selects[i].id);
             }
 
             return items;
         }
-*/
+
         //获取值：
         function getSelectedValue(Id) {
             var index,
@@ -101,10 +104,10 @@
             var regionSelect = document.querySelector("#region");
             var productSelect = document.querySelector("#product");
             regionSelect.onchange = function(event) {
-                createTable(getSelectedData("region"));
+                createTable(getSelectedData());
             }
             productSelect.onchange = function(event) {
-                createTable(getSelectedData("product"));
+                createTable(getSelectedData());
             }
         }
         window.onload = selectEventHandle;
