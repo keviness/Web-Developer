@@ -149,6 +149,28 @@ function createTableForm(data) {
         tableWrapper.innerHTML = tableHTML;
 }
 
+//合并表格的重复单元格:从row行开始合并colum列的重复单元格
+function autoRowSpan(tb, row, colum) {
+    var currentValue,
+        previousValue,
+        count;
+
+    count = 0;
+    previousValue = "";
+    currentValue = "";
+    for (var i=row; i<tb.rows.length; i++){
+        currentValue = tb.rows[i].cells[colum].innerHTML;
+        if (previousValue === currentValue) {
+            tb.rows[row].deleteCell(colum);
+            tb.rows[i-row-count].cells[colum].rowSpan = row+count+1;
+            count++;
+        }else {
+            previousValue = currentValue;
+            count = 0;
+        }
+    }
+}
+
 //主函数控制：
 function mainFunction() {
     var radiosWrapper = document.querySelector("#radio-wrapper");
@@ -168,10 +190,21 @@ function mainFunction() {
         var targetElement = event.target;
         if (targetElement.nodeName.toLowerCase() === "input") {
             createTableForm(FilterDataSource());
+
+            var table = document.querySelector("#table-wrapper table");
+            var regionValueNum = getCheckedValue("region-radio-wrapper");
+            var productValueNum = getCheckedValue("product-radio-wrapper");
+        /*    if (regionValueNum.length > 1) {
+                autoRowSpan(table, 1, 0);
+            }
+            if (regionValueNum.length===1 && productValueNum.length>1) {
+                autoRowSpan(table, 0, 1);
+            }
+        */
         }
     }
-
 }
+
 
 
 window.onload = function(event) {

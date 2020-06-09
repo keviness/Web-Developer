@@ -1,4 +1,4 @@
-## array.sort([compareFunction])
+## 一，array.sort([compareFunction])
 >数组排序
 ### compareFunction
 >用来指定按某种顺序进行排列的函数。
@@ -104,3 +104,50 @@
         return list[el.index];
     });
 
+## 二，event.preventDefault()
+>阻止默认行为
+
+    <html>
+    <head>
+    <script type="text/javascript" src="/jquery/jquery.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $("a").click(function(event){
+        event.preventDefault();
+        });
+    });
+    </script>
+    </head>
+    <body>
+    <a href="http://w3school.com.cn/">W3School</a>
+    </body>
+    </html>
+
+    //event.preventDefault() 方法将防止上面的链接打开 URL
+    
+## event.stopPropagation()
+>阻止事件冒泡；
+
+    var btn = document.getElementById('myBtn');
+    document.onclick = function(){
+        alert(1);
+    }
+    btn.onclick = function(event){
+        event.stopPropagation();
+    }
+
+&emsp;这样当点击btn时，绑定在document的事件不会被触发，因为btn的事件冒泡机制被组织了。
+
+### 兼容IE
+
+    if (event.stopPropagation){  
+        event.stopPropagation();  
+    }else{  
+        event.cancelBubble=true;  
+    }  
+
+    if (event.preventDefault){  
+    event.preventDefault();  
+    }else{  
+        event.returnValue=false;  
+    }  
