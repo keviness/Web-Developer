@@ -2,6 +2,8 @@
 "use strict"
 var CHECKBOXWRAPPER_IDS = ["region-radio-wrapper", "product-radio-wrapper"];
 
+/******************** 动态创建CheckBox *******************/
+
 function checkboxHandle(wrapperId, configData) {
     var resultHTML,
         key,
@@ -69,6 +71,7 @@ function checkboxHandle(wrapperId, configData) {
     }
 }
 
+/****************** 筛选数据 ********************/
 //根据选中的内容筛选出数据
 function FilterDataSource() {
     var data,
@@ -98,9 +101,27 @@ function FilterDataSource() {
             })
         }
     }
+
+    /*
+    //对数据进行排序
+    data.sort(function(a, b) {
+        var s = ChineseSort(a.region, b.region);
+        if (!s) {
+            return ChineseSort(a.product, b.product);
+        }
+        return s;
+    })
+    */
+   
     return data;
 }
 
+/*
+//按照汉语拼音对数据进行排序
+function ChineseSort(a, b) {
+    return a.localeCompare(b, 'zh-Hans-CN', {sensitivity: "accent"});
+}
+*/
 
 //获取选中wrapper的值
 function getCheckedValue(Id) {
@@ -119,6 +140,7 @@ function getCheckedValue(Id) {
     return result;
 }
 
+/*********************** 表格渲染 ***************************/
 //动态创建Table Form
 function createTableForm(data) {
     var tableHTML,
@@ -212,6 +234,7 @@ function MergeCell(table, startRow, endRow, col, endCol, isInit) {
     }
 }
 
+/******************** 主函数 ************************/
 //主函数控制：
 function mainFunction() {
     var radiosWrapper = document.querySelector("#radio-wrapper");
@@ -244,7 +267,6 @@ function mainFunction() {
         }
     }
 }
-
 
 
 window.onload = function(event) {
