@@ -1,0 +1,10 @@
+<!DOCTYPE svg>
+<svg version="1.1">
+    <circle cx="100" cy="50" r="40" stroke="black" stroke-width="2" fill="red"/>
+    <rect x="1" y="2" width="200" height="300" fill="none" stroke="black" stroke-width="2"/>
+    <polyline points="0,0 70,200 200,300" fill="blue" stroke="blue" style="stroke-width:1"/>
+    <polyline points="0,150 50,140 100,160 150,150 200,140" fill="pink"/>
+    <text x="10" y="280" stroke="red">I love you</text>
+    <polygon points="100,0 0,150 200,150 " opacity="0.5" fill="green"/>
+    <polygon points="66,150 132,150 132,300 66,300" fill="green" opacity="0.5"/>
+</svg>
