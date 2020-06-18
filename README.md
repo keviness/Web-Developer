@@ -17,7 +17,7 @@
 | Day25~27 | 倒数开始 滴答滴 滴答滴 | [code](./IFE_BASE/Day25_27)| [preview](https://keviness.top/Web-Developer/IFE_BASE/Day25_27/test3.html)|
 | Day28~30 | 给爱的人发个邮件吧    |[code](./IFE_BASE/Day28_30)|[preview](https://keviness.top/Web-Developer/IFE_BASE/Day28_30/task4.html)|
 | Day31~33 | 我是精明的小卖家（一）|[code](./IFE_BASE/Day31_33)|[preview](https://keviness.top/Web-Developer/IFE_BASE/Day31_33/task3/task3.html)|
-| Day34~36 |第三十四天到第三十六天：我是精明的小卖家（二）|[code](./IFE_BASE/Day34_36)|[preview](https://keviness.top/Web-Developer/IFE_BASE/Day31_33/task1.html)|
+| Day34~36 |第三十四天到第三十六天：我是精明的小卖家（二）|[code](./IFE_BASE/Day34_36)|[preview](https://keviness.top/Web-Developer/IFE_BASE/Day34_36/task2/task2.html)|
 
 ### JavaScriptDOM 
 #### Index
