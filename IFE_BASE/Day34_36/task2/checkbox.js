@@ -250,14 +250,6 @@ function mainFunction() {
         {id: "智能音箱", name: "product"}
     ]);
     
-    //用svg生成华东地区数据直方图
-    histogram.svgWrapperId = "svg-wrapper";
-    histogram.init(sourceData[0]);
-    histogram.drawBar();
-    //generateHistogram(sourceData[0]);
-    //用canvas生成华东地区数据折线图
-    drawLineChart(sourceData[0]);
-
     radiosWrapper.onclick = function(event) {
         var targetElement = event.target;
         if (targetElement.nodeName.toLowerCase() === "input") {
@@ -274,6 +266,56 @@ function mainFunction() {
             }
         }
     }
+
+    var tableObj = document.querySelector("#table-wrapper");
+    tableObj.onmouseover = function(event) {
+        if (event.target.nodeName.toLowerCase() == "td") {
+            var tableDataList,
+                svgWrapper,
+                lineWrapper,
+                selectCells;
+            tableDataList = [];
+            selectCells = event.target.parentElement.cells;
+            for (var i=0; i<selectCells.length; i++) {
+                tableDataList.push(selectCells[i].innerHTML);
+            }
+            tableDataList = tableDataList.filter(function(item, index, array){
+                return !isNaN(item);
+            });
+
+            //draw histogram:
+            svgWrapper = document.querySelector("#svg-wrapper");
+            if (svgWrapper.firstChild)
+            {
+                svgWrapper.removeChild(svgWrapper.firstChild);
+            }
+            histogram.svgWrapperId = "svg-wrapper";
+            histogram.init(tableDataList);
+            histogram.drawBar();
+            //draw lineChart:
+            lineWrapper = document.querySelector("#line-wrapper");
+            if (lineWrapper.firstChild)
+            {
+                lineWrapper.removeChild(lineWrapper.firstChild);
+            }
+            lineChart.lineWrapperId = "line-wrapper";
+            lineChart.init(tableDataList);
+            lineChart.drawLineChart();
+
+        }
+    }
+    /*
+    //用svg生成华东地区数据直方图
+    histogram.svgWrapperId = "svg-wrapper";
+    histogram.init(sourceData[0]);
+    histogram.drawBar();
+    //generateHistogram(sourceData[0]);
+    //用canvas生成华东地区数据折线图
+    lineChart.lineWrapperId = "line-wrapper";
+    lineChart.init(sourceData[0]);
+    lineChart.drawLineChart();
+    //drawLineChart(sourceData[0]);
+    */
 }
 
 
