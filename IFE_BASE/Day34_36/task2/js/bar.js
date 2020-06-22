@@ -31,22 +31,21 @@ histogram = {
     SVGLN: "http://www.w3.org/2000/svg",
     width: 800,
     height: 460,
-    initSpace:0,
+    initSpace:20,
     data: [],
     xaxis: 0,
     yaxis: 0,
     svgWrapperId: "",
     svg: null,
-    barwidth: 0,
-    barspace: 0,
-    barcolor: "",
+    barwidth: 30,
+    barspace: 30,
+    initBarSpace:0,
+    barcolor: "green",
     x0: 0,
     y0: 0,
     pxDataRate: 0,
 
-    init: function(data) {
-        this.initSpace = 20;
-        this.data = data;
+    init: function() {
         this.xaxis = this.width-this.initSpace;
         this.yaxis = this.height-this.initSpace;
         this.x0 = this.initSpace;
@@ -70,25 +69,64 @@ histogram = {
     },
 
     drawBar: function() {
-        this.barcolor = "green";
-        this.barwidth = 30;
-        this.barspace = 25;
-        
         var sales = this.data;
         var max = Math.max.apply(null, sales);
         this.pxDataRate = this.yaxis/max;
         
         for (var i=0; i<sales.length; i++) {
             var rectBar = document.createElementNS(this.SVGLN,"rect");
-            rectBar.setAttribute("x", this.x0+(this.barspace*(i+1)+this.barwidth*i));
+            rectBar.setAttribute("x", this.x0+(this.barspace*(i+1)+this.barwidth*i)+this.initBarSpace);
             rectBar.setAttribute("y", this.y0-sales[i]*this.pxDataRate);
             rectBar.setAttribute("width", this.barwidth);
             rectBar.setAttribute("height", sales[i]*this.pxDataRate);
             rectBar.setAttribute("stroke-width", 0);
-            rectBar.setAttribute("fill", "green");
+            rectBar.setAttribute("fill", this.barcolor);
             this.svg.appendChild(rectBar);
         }
+    },
+
+    drawMainFunction: function(data) {
+        this.init();
+        this.data = data;
+        this.drawBar();
         var svgWrapper = document.querySelector("#"+this.svgWrapperId);
         svgWrapper.appendChild(this.svg);
+    },
+
+    drawHistogramGroup: function(dataArray, colorArray) {
+        var previousBarWidth,
+            previousBarSpace,
+            previousBarColor,
+            previousInitBarSpace,
+            previousInitSpace,
+            maxArray;
+
+        previousBarColor = this.barcolor;
+        previousBarSpace = this.barspace;
+        previousInitBarSpace = this.initBarSpace;
+        previousBarWidth = this.barwidth;
+        prevoiusPxDataRate = this.pxDataRate;
+
+        this.barwidth = 5;
+        this.initBarSpace = -8*this.barwidth;
+        this.barspace = (this.xaxis/(dataArray[0].length))-10;
+        maxArray = dataArray.map(function(item, index, array) {
+            return Math.max.apply(item);
+        });
+        this.pxDataRate = this.yaxis/(Math.max.apply(maxArray));
+
+        this.init();
+        for (var i=0; i<dataArray.length; i++) {
+            this.data = dataArray[i];
+            this.initBarSpace = this.initBarSpace + this.barwidth;
+            this.barcolor = colorArray[i];
+            this.drawBar();
+        }
+        document.querySelector("#"+this.svgWrapperId).appendChild(this.svg);
+        this.barcolor = previousBarColor;
+        this.barspace = previousBarSpace;
+        this.initBarSpace = previousInitBarSpace;
+        this.barwidth = previousBarWidth;
+        this.pxDataRate= prevoiusPxDataRate;
     }
 }
