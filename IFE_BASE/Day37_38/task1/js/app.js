@@ -67,7 +67,7 @@ function mainFunction() {
             lineChart.drawMainFunction(tableDataList);
         }
     }
-
+    //绘制多条直方图和折线图
     document.querySelector("#table-wrapper").onmouseout = function(event) {
         var dataArray,
             colorArray,
@@ -96,6 +96,16 @@ function mainFunction() {
         lineChart.lineWrapperId = "line-wrapper";
         lineChart.drawLineChartGroup(dataArray, colorArray);
     }
+
+    //处理localStorage
+    initStorage();
+    initEditTableCell("table-wrapper");
+    /*
+    var saveBtn = document.querySelector("#save-btn");
+    saveBtn.addEventListener("click", saveDataToLocalStorage, false);
+    var tableObj = document.querySelector("#table-wrapper");
+    tableObj.addEventListener("blur", checkInputValue, false);
+    */
 
     /*
     //用svg生成华东地区数据直方图
