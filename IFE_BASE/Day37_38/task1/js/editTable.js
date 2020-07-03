@@ -3,7 +3,7 @@ function initEditTableCell(tableId) {
         tdObj,
         tableObj,
         inputObj;
-    tableObj = document.querySelector("#" + tableId);
+    tableObj = document.querySelector("#" + tableId + " table");
     tdObj = tableObj.getElementsByTagName("td");
     for (var i=0; i<tdObj.length; i++) {
         if (isNaN(tdObj[i].innerHTML)) {
@@ -13,10 +13,9 @@ function initEditTableCell(tableId) {
         inputObj = document.createElement("input");
         inputObj.type = "text";
         inputObj.value = tdObj[i].innerHTML;
+        tdObj[i].innerHTML = "";
         divObj.appendChild(inputObj);
         tdObj[i].appendChild(divObj);
-        tdObj.innerHTML = "";
-        inputObj.focus();
     }
 }
 
@@ -24,21 +23,19 @@ function saveDataToLocalStorage() {
     var localData,
         table,
         tdObj,
-        inputObj,
         region,
         product,
         valueList;      
     localData = getStorage();
     table = document.getElementsByTagName("table")[0];
-
+    valueList = [];
     for (var i=1; i<table.rows.length; i++) {
-        tdObj = table.rows[i].cells
-        region = tdObj[0].getElementsByTagName("input")[0].value;
-        product = tdObj[1].getElementsByTagName("input")[0].value;
+        tdObj = table.rows[i].cells;
+        region = tdObj[0].innerHTML;
+        product = tdObj[1].innerHTML;
         for (var j=2; j<tdObj.length; j++) {
-            inputObj = tdObj[j].getElementsByTagName("input")[0];
-            if (!isNaN(inputObj.value)) {
-                valueList.push(inputObj.value);
+            if (!isNaN(tdObj.innerHTML)) {
+                valueList.push(tdObj.innerHTML);
             }
         }
         updateLocalStorage(product, region, valueList);

@@ -99,13 +99,19 @@ function mainFunction() {
 
     //处理localStorage
     initStorage();
-    initEditTableCell("table-wrapper");
-    /*
     var saveBtn = document.querySelector("#save-btn");
-    saveBtn.addEventListener("click", saveDataToLocalStorage, false);
-    var tableObj = document.querySelector("#table-wrapper");
-    tableObj.addEventListener("blur", checkInputValue, false);
-    */
+    saveBtn.onclick = function() {
+        initEditTableCell("table-wrapper");
+        saveDataToLocalStorage();
+
+        var tableObj = document.querySelector("#table-wrapper");
+        tableObj.onblur = function(event) {
+            checkInputValue(event);
+        }
+    }
+    
+    
+    
 
     /*
     //用svg生成华东地区数据直方图
