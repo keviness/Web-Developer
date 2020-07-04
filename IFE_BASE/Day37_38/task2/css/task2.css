@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+}
+#radio-wrapper, #table-wrapper{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+#chart-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+#svg-wrapper{
+    width: 55%;
+}
+#line-wrapper{
+    width: 45%;
+}

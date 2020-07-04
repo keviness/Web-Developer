@@ -1,3 +1,4 @@
+//为单元格动态创建input元素，使单元格进入编辑状态
 function initEditTableCell(tableId) {
     var divObj,
         tdObj,
@@ -16,6 +17,9 @@ function initEditTableCell(tableId) {
         tdObj[i].innerHTML = "";
         divObj.appendChild(inputObj);
         tdObj[i].appendChild(divObj);
+        inputObj.onblur = function(event) {
+            checkInputValue(event);
+        }
     }
 }
 
