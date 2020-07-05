@@ -24,7 +24,7 @@ function initEditTableCell(td) {
     initValue = td.innerHTML;
     td.innerHTML = "";
     td.appendChild(divObj);
-
+    td.setAttribute("class", "check");
     divObj.addEventListener("click", function(event){
         changeEditStatus(event, initValue)
     }, false);
@@ -50,11 +50,13 @@ function changeEditStatus(event, initValue) {
     var targetElement = event.target,
         eventType = event.type;
 
-    if ((eventType==="click" && targetElement.getAttribute("class")==="cancle-btn")) {
+    if ((eventType==="click" && targetElement.getAttribute("class")==="cancle-btn")
+        || (eventType==="keyup" && event.keyCode===27)) {
         exitEditStatus(targetElement.parentNode, initValue);
     }
 
-    if ((eventType==="click" && targetElement.getAttribute("class")==="check-btn")) {
+    if ((eventType==="click" && targetElement.getAttribute("class")==="check-btn")
+        || (eventType==="keyup" && event.keyCode===13)) {
         var inputObj = document.querySelector(".input-obj"),
             value = inputObj.value,
             tdObj = targetElement.parentNode.parentNode,
@@ -78,5 +80,4 @@ function exitEditStatus(div, value) {
     var td = div.parentNode;
     td.innerHTML = value;
     td.setAttribute("class", "sale");
-    div.setAttribute("class", "checked");
 }

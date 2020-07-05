@@ -77,7 +77,7 @@ function FilterDataSource() {
     var data,
         checkedValue;
 
-    data = sourceData;
+    data = getStorage() || sourceData;
     for (var i=0; i<CHECKBOXWRAPPER_IDS.length; i++) {
         checkedValue = getCheckedValue(CHECKBOXWRAPPER_IDS[i]);
         if (CHECKBOXWRAPPER_IDS[i] === "region-radio-wrapper") {

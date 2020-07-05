@@ -75,10 +75,11 @@ function mainFunction() {
             svgWrapper,
             lineWrapper;
 
+        data = getStorage() || sourceData;
         dataArray = [];
         colorArray = ["green", "blue", "yellow", "pink", "black", "red", "gray", "brown", "orange"];
-        for (var i=0; i<sourceData.length; i++) {
-            dataArray.push(sourceData[i].sale);
+        for (var i=0; i<data.length; i++) {
+            dataArray.push(data[i].sale);
         }
         
         //draw histogram:
@@ -117,18 +118,18 @@ function mainFunction() {
     function editStatusTable(event) {
         var tdObj = event.target;
         if (tdObj.nodeName.toLowerCase() === "td") {
-            var divObj = document.querySelector(".checked");
+            var editCell = document.querySelector(".div-obj");
+            if (editCell) {
+                exitEditStatus(editCell, editCell.firstChild.value);
+            }
             if (tdObj.getAttribute("class") === "sale") {
                 initEditTableCell(tdObj);
-            }
-            if (divObj) {
-                exitEditStatus(divObj, divObj.firstChild.value);
             }
         }
     }    
     document.querySelector("#table-wrapper").addEventListener("click", editStatusTable, false);
 
-    /*
+
     //关闭多余进入编辑状态的单元格
     function exitEditStatusTable(event) {
         var targetElement = event.target;
@@ -140,7 +141,6 @@ function mainFunction() {
         }
     }
     document.querySelector("#table-wrapper").addEventListener("click", exitEditStatusTable, false);
-    */
 
     /*
     //用svg生成华东地区数据直方图
