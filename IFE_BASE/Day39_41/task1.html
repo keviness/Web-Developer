@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day39~41 task1</title>
+</head>
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+    <div id="cont"></div>
+
+    <script>
+        var bodyObj = document.getElementsByTagName("body")[0];
+        bodyObj.addEventListener("click", getButtonValue, false);
+        window.addEventListener("hashchange", showToCont, false);
+
+        function getButtonValue(event) {
+            var targetElement = event.target;
+            if (targetElement.nodeName.toLowerCase() === "button") {
+                value = targetElement.innerHTML;
+                location.hash = value;
+            }
+        }
+
+        function showToCont() {
+            var value,
+                contObj;
+
+            contObj = document.querySelector("#cont");
+            value = getLocationHash();
+            if (value) {
+                contObj.innerHTML = value;
+            }
+        }
+
+        function getLocationHash() {
+            var hashValue = location.hash;
+            
+            return hashValue? hashValue.substring(1, hashValue.length):null;
+        }
+
+
+    </script>
+</body>
+</html>

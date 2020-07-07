@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <title>Day39~41 task3</title>
+</head>
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+    <button id="c">C</button>
+
+    <button id="d">D</button>
+    <button id="e">E</button>
+    <button id="f">F</button>
+    
+    <div id="contABC"></div>
+    <div id="contDEF"></div>
+
+    <script>
+        var bodyObj = document.getElementsByTagName("body")[0];
+        bodyObj.addEventListener("click", updateLocationHash, false);
+        //window.addEventListener("hashchange", showToCont, false);
+
+        function updateLocationHash(event) {
+            var targetElement = event.target,
+                HashValue = location.hash || "contABC=&contDEF=";
+            if (targetElement.nodeName.toLowerCase() === "button") {
+                var contABC = "contABC=",
+                    contDEF = "contDEF=",
+                    HashList;
+
+                if (targetElement.id==='a' || targetElement.id==='b' || targetElement.id==='c') {
+                    contABC += targetElement.innerHTML;
+                }
+                if (targetElement.id==='d' || targetElement.id==='e' || targetElement.id==='f') {
+                    contDEF += targetElement.innerHTML; 
+                }
+                HashValue = HashValue.substring(1);
+                HashList = HashValue.split("&");
+                if (contABC.length !== 8) {
+                    HashList[0] = contABC;
+                }
+                if (contDEF.length !== 8) {
+                    HashList[1] = contDEF;
+                }
+                //location.hash = HashList.join("&");
+                history.pushState(null, null, "#"+HashList[0]+"&"+HashList[1]);
+                showToCont();
+            }
+        }
+
+        function getHashValue() {
+            var hashValue = location.hash,
+                hashList,
+                itemList,
+                hashObj = {};
+            if (!hashValue) {
+                return null;
+            }
+            hashValue = hashValue.substring(1);
+            hashList = hashValue.split("&");
+            for (var i=0; i<hashList.length; i++) {
+                itemList = hashList[i].split("=");
+                if (itemList[1]) {
+                    hashObj[itemList[0]] = itemList[1];
+                }
+            }
+            return hashObj;
+        }
+
+        function showToCont() {
+            var contABCObj,
+                contDEFObj,
+                hashObj = getHashValue();
+            contABCObj = document.querySelector("#contABC");
+            contDEFObj = document.querySelector("#contDEF");
+            if (!hashObj) {
+                return;
+            }
+            if (hashObj.contABC) {
+                contABCObj.innerHTML = hashObj.contABC;
+            }
+            if (hashObj.contDEF) {
+                contDEFObj.innerHTML = hashObj.contDEF;
+            }
+        }
+    </script>
+</body>
+</html>
