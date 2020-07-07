@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+}
+#radio-wrapper, #table-wrapper{
+    margin-left: 20px;
+    margin-top: 20px;
+}
+#chart-wrapper{
+    display: flex;
+    justify-content: space-between;
+}
+#svg-wrapper{
+    width: 55%;
+}
+#line-wrapper{
+    width: 45%;
+}
+table td {
+    width: 100px;
+    height: 30px;
+}
+table td.sale:hover{
+    background-image: url(../img/edit.png);
+    background-position: 95% 50%;
+    background-size: 30% 90%;
+    background-repeat: no-repeat;
+}
+table div.div-obj{
+    display: flex;
+    justify-content: space-around;
+}
+table div .input-obj{
+    width: 45%;
+    border: 2px solid black
+}
+table div .check-btn{
+    width: 25px;
+    height: 25px;
+    background-image: url(../img/check.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+table div .cancle-btn{
+    width: 25px;
+    height: 25px;
+    background-image: url(../img/cancle.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
